@@ -27,6 +27,7 @@ const Hero = () => {
                         backgroundColor: 'transparent',
                         border: '3px solid white',
                         color: 'white',
+
                     }}
                 >
                     SHOP NOW
