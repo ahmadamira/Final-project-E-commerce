@@ -13,7 +13,7 @@ const Stbox = styled(Box)(({ theme }) => ({
 }));
 const Titlehome = styled(Typography)(({ theme }) => ({
 
-    width: '390px',
+
     height: '48px',
 
     fontFamily: 'Arimo',
@@ -31,7 +31,7 @@ const Titlehome = styled(Typography)(({ theme }) => ({
 
 const Subtitlehome = styled(Typography)(({ theme }) => ({
 
-    width: '400px',
+
     height: '48px',
     left: '586px',
 
