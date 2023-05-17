@@ -1,25 +1,20 @@
-import React from 'react'
+import React from 'react';
 import { styled } from '@mui/system';
 import { Box, Typography, Button, useTheme, Container } from "@mui/material";
+
 const StyledBox = styled(Box)(({ theme }) => ({
 
-    width: '715px',
-    height: '429px',
     alignContent: 'center',
-
     background: '#000000',
     [theme.breakpoints.down('sm')]: {
-        width: '350px',
-        height: '250px',
-    },
-    [theme.breakpoints.only('md')]: {
-        width: '500px',
-        height: '300px',
+        width: '100%',
+        height: 'auto',
+        padding: '24px',
     },
 }));
+
 const Titletypo = styled(Typography)(({ theme }) => ({
     paddingTop: '15%',
-    left: '237px',
     top: '10%',
     fontFamily: 'Lato',
     fontStyle: 'normal',
@@ -32,6 +27,7 @@ const Titletypo = styled(Typography)(({ theme }) => ({
     [theme.breakpoints.down('sm')]: {
         fontSize: '24px',
         lineHeight: '36px',
+        paddingTop: '10%',
     },
 }));
 
@@ -49,7 +45,9 @@ const Subtitletypo = styled(Typography)(({ theme }) => ({
         lineHeight: '24px',
     },
 }));
+
 const StyledButton = styled(Button)(({ theme }) => ({
+
     background: '#FFFFFF',
     color: '#0000FF',
     marginTop: "32px",
@@ -68,16 +66,19 @@ const StyledButton = styled(Button)(({ theme }) => ({
 }));
 
 const Offer = () => {
+
     return (
         <div>
+
             <StyledBox>
+
                 <Titletypo>peace of mind</Titletypo>
                 <Subtitletypo> A one-stop platform for all your fashion needs,<br></br> hassle-free. Buy with a peace of mind.</Subtitletypo>
                 <StyledButton>buy now</StyledButton>
             </StyledBox>
 
         </div>
-    )
+    );
 }
 
-export default Offer
+export default Offer;
