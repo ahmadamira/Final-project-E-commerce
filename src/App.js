@@ -10,12 +10,13 @@ import Foundercard from "./Components/Aboutpage/Foundercard/Foundercard";
 import Testimcard from "./Components/Aboutpage/Testimocard/Testimocard";
 import Aboutpage from "./Components/Aboutpage/Aboutpage";
 import ContactForm from "./Components/Contactuspage/Contactuspage";
+import Productpage from "./Components/Productpage/Productpage";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <ContactForm />
+      <Productpage />
       <Footer />
     </div>
   );
