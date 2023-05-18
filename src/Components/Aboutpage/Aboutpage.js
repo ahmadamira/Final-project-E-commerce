@@ -11,7 +11,7 @@ import Gridd from './Gridd/Gridd'
 const Aboutpage = () => {
     return (
         <div>
-            <Abouthero />
+            <Abouthero img="/imgs/about.jpg" text="About Northstar" />
             <Aboutgrid />
             <Sec title="The Founders" />
             <Foundergrid />
