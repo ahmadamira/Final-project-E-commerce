@@ -7,6 +7,7 @@ import Cardcom from "./Components/Card-com/Card";
 import Abouthero from "./Components/Aboutpage/Abouthero/Abouthero";
 import Aboutcard from "./Components/Aboutpage/Aboutcard/Aboutcard";
 import Foundercard from "./Components/Aboutpage/Foundercard/Foundercard";
+import Testimcard from "./Components/Aboutpage/Testimocard/Testimocard";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Abouthero />
       <Aboutcard />
       <Foundercard />
+      <Testimcard />
 
       <Footer />
     </div>
