@@ -11,12 +11,14 @@ import Testimcard from "./Components/Aboutpage/Testimocard/Testimocard";
 import Aboutpage from "./Components/Aboutpage/Aboutpage";
 import ContactForm from "./Components/Contactuspage/Contactuspage";
 import Productpage from "./Components/Productpage/Productpage";
+import Loginpage from "./Components/Loginpage/Loginpage";
+import SignUp from "./Components/Signuppage/Signup";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <Productpage />
+      <Loginpage />
       <Footer />
     </div>
   );
