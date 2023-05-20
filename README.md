@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+# Project Idea and Business
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The project idea is an e-commerce website called ”NorthStar” that sells clothing items. The website will allow customers to browse through the available
+products, add them to their cart, and place orders.
+The main goal of NorthStar is to provide customers with an easy and convenient way to shop for clothing items online. The website will provide a platform
+where customers can view the products and place orders without having to leave
+their homes.
 
-## Available Scripts
+##  Design
 
-In the project directory, you can run:
+The design for NorthStar can be found at the following link:
+[NorthStar Design]([URL](https://www.figma.com/file/n3vP16sfybPdJoULzYTG1M/eCommerce-Fashion-Website-(Community)
+?type=design&node-id=0-1&t=WvajTNkkCqasEYhh-0))
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+###  Firebase Services
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+I will be using several Firebase services for the backend of NorthStar:
+• Firebase Authentication: This service will be used to authenticate users
+and protect their personal information.
+• Firebase Realtime Database: This service will be used to store and retrieve
+data, such as product information and customer orders.
+• Firebase Hosting: This service will be used to host the website and make
+it accessible to users.
+• Firebase A/B testing .
 
-### `npm test`
+### Conclusion
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In conclusion, NorthStar will be a fully functional and user-friendly e-commerce
+website that provides customers with an easy and convenient way to shop for
+clothing items online. By using React, we can create a visually appealing and
+responsive user interface that allows customers to easily browse and purchase
+products. With the use of Firebase services, we can provide a secure and reliable backend for storing and retrieving data, handling user authentication, and
+hosting the website.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Please note that the website is not complete yet and expected to be finished at the 31th of may.
