@@ -8,16 +8,14 @@ import Abouthero from "./Components/Aboutpage/Abouthero/Abouthero";
 import Aboutcard from "./Components/Aboutpage/Aboutcard/Aboutcard";
 import Foundercard from "./Components/Aboutpage/Foundercard/Foundercard";
 import Testimcard from "./Components/Aboutpage/Testimocard/Testimocard";
+import Aboutpage from "./Components/Aboutpage/Aboutpage";
+import ContactForm from "./Components/Contactuspage/Contactuspage";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <Abouthero />
-      <Aboutcard />
-      <Foundercard />
-      <Testimcard />
-
+      <ContactForm />
       <Footer />
     </div>
   );

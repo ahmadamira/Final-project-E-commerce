@@ -1,14 +1,14 @@
 import { Box, Button } from '@mui/material';
 import { styled } from '@mui/system';
 
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled(Box)(({ theme, backgroundImage }) => ({
     position: 'relative',
-    width: '50%',
+    width: '100%',
     height: '600px',
     [theme.breakpoints.down('sm')]: {
         height: '400px',
     },
-    backgroundImage: 'url(/imgs/aboutcard.png)',
+    backgroundImage: `url(${backgroundImage})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
 }));
@@ -35,9 +35,9 @@ const StyledButton = styled(Button)(({ theme }) => ({
     },
 }));
 
-const Aboutcard = () => {
+const Aboutcard = ({ img }) => {
     return (
-        <StyledBox>
+        <StyledBox backgroundImage={img}>
             <StyledButton variant="contained">buy now</StyledButton>
         </StyledBox>
     );

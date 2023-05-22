@@ -2,10 +2,10 @@ import React from 'react';
 import { styled } from '@mui/system';
 import { Box, Typography } from '@mui/material';
 
-const HeroSection = styled(Box)(({ theme }) => ({
+const HeroSection = styled(Box)(({ theme, backgroundImage }) => ({
     position: 'relative',
     height: '348px',
-    background: `url('/imgs/about.jpg')`,
+    background: `url('${backgroundImage}')`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
 }));
@@ -17,9 +17,7 @@ const TextContainer = styled(Box)(({ theme }) => ({
 }));
 
 const Title = styled(Typography)(({ theme }) => ({
-
     width: '100%',
-
     top: '315px',
     fontFamily: 'Lato',
     fontStyle: 'normal',
@@ -29,11 +27,12 @@ const Title = styled(Typography)(({ theme }) => ({
     textTransform: 'uppercase',
     color: '#FFFFFF',
 }));
-const Abouthero = () => {
+
+const Abouthero = ({ img, text }) => {
     return (
-        <HeroSection>
+        <HeroSection backgroundImage={img}>
             <TextContainer>
-                <Title>About Northstar</Title>
+                <Title>{text}</Title>
             </TextContainer>
         </HeroSection>
     );

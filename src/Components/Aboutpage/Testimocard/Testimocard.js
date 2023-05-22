@@ -15,7 +15,8 @@ const Styledtypo = styled(Typography)(({ theme }) => ({
     },
 }));
 
-const Testimcard = () => {
+const Testimcard = (props) => {
+    const { descreption, pername, img } = props;
     return (
         <Box
             display="flex"
@@ -30,14 +31,14 @@ const Testimcard = () => {
 
 
             >
-                <img src="/imgs/testm.png" alt="Rounded Image" style={{ maxWidth: '100%', height: 'auto' }} />
+                <img src={img} alt="Rounded Image" style={{ maxWidth: '100%', height: 'auto' }} />
             </Box>
             <Box textAlign="left">
                 <img src="/imgs/page 1.png" />
                 <Styledtypo variant="body1" sx={{ mt: '12px', mb: '32px' }}>
-                    Once we ordered some accessories items and we got the products delivered in our doorstep, the customer support was super helpful and they answered all my queries.
+                    {descreption}
                 </Styledtypo>
-                <Typography variant="h6">Stacy</Typography>
+                <Typography variant="h6">{pername}</Typography>
             </Box>
         </Box>
     );

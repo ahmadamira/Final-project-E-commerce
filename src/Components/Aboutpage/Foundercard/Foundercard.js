@@ -5,20 +5,21 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-export default function Foundercard() {
+export default function Foundercard(props) {
+    const { pername, img } = props;
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 345, height: "364px" }}>
             <CardActionArea>
                 <CardMedia
                     component="img"
 
-                    height="364px"
-                    image="imgs/founder.png"
+
+                    image={img}
                     alt="founder img"
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div" textAlign='left'>
-                        HM Jawad
+                        {pername}
 
                     </Typography>
 
