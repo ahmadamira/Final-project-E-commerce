@@ -14,19 +14,17 @@ const TextContainer = styled(Box)(({ theme }) => ({
     position: 'absolute',
     bottom: '20px',
     left: '20px',
-    padding: '10px',
-
 }));
 
 const Title = styled(Typography)(({ theme }) => ({
 
     width: '100%',
-    left: '63px',
+
     top: '315px',
     fontFamily: 'Lato',
     fontStyle: 'normal',
     fontWeight: 400,
-    fontSize: '48px',
+    fontSize: '40px',
     lineHeight: '48px',
     textTransform: 'uppercase',
     color: '#FFFFFF',

@@ -5,12 +5,16 @@ import Footer from "./Components/Footer/Footer";
 import Home from "./Components/Home-page/Home";
 import Cardcom from "./Components/Card-com/Card";
 import Abouthero from "./Components/Aboutpage/Abouthero/Abouthero";
+import Aboutcard from "./Components/Aboutpage/Aboutcard/Aboutcard";
+import Foundercard from "./Components/Aboutpage/Foundercard/Foundercard";
 
 function App() {
   return (
     <div className="App">
       <Header />
       <Abouthero />
+      <Aboutcard />
+      <Foundercard />
 
       <Footer />
     </div>
