@@ -8,6 +8,7 @@ const StyledBox = styled(Box)({
 
     height: '71px',
     width: '233px',
+
 });
 const Titletypo = styled(Typography)({
     fontFamily: 'Baloo',
@@ -32,15 +33,16 @@ const Subtitletypo = styled(Typography)({
     paddingTop: '8px',
 });
 
-const Service = () => {
+const Service = (props) => {
+    const { title, subtitle, img } = props;
     return (
         <div>
             <StyledBox>
                 <Box display='flex' flexDirection='row'>
-                    <img src='/imgs/iconservice.png'></img>
-                    <Titletypo>Free Shipping</Titletypo>
+                    <img src={img}></img>
+                    <Titletypo>{title}</Titletypo>
                 </Box>
-                <Subtitletypo>Enjoy free shipping on all orders above $100</Subtitletypo>
+                <Subtitletypo>{subtitle}</Subtitletypo>
             </StyledBox>
         </div>
     )

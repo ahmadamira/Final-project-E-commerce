@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <Header />
       <Home />
-      <Cardcom />
+
       <Footer />
     </div>
   );
