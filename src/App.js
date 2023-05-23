@@ -14,12 +14,13 @@ import Productpage from "./Components/Productpage/Productpage";
 import Loginpage from "./Components/Loginpage/Loginpage";
 import SignUp from "./Components/Signuppage/Signup";
 import BasicTable from "./Components/Totalpage/Totalpage";
+import Checkoutpage from "./Components/Checkoutpage/Checkoutpage";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <BasicTable />
+      <Checkoutpage />
       <Footer />
     </div>
   );
