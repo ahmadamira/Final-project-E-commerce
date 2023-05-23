@@ -13,12 +13,13 @@ import ContactForm from "./Components/Contactuspage/Contactuspage";
 import Productpage from "./Components/Productpage/Productpage";
 import Loginpage from "./Components/Loginpage/Loginpage";
 import SignUp from "./Components/Signuppage/Signup";
+import BasicTable from "./Components/Totalpage/Totalpage";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <Loginpage />
+      <BasicTable />
       <Footer />
     </div>
   );
