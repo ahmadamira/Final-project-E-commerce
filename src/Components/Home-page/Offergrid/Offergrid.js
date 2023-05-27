@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Grid, Box, Button, Typography } from '@mui/material';
 import { styled } from '@mui/system';
+import { Link } from 'react-router-dom';
 import Offer from '../Offers-card/Offer';
 
 const Titletypo = styled(Typography)(({ theme }) => ({
@@ -51,7 +52,10 @@ const StyledButton = styled(Button)(({ theme }) => ({
 
     },
 }));
+const handleClick = () => {
 
+    window.scrollTo(0, 0);
+};
 const Offergrid = () => {
     const arr = [1, 2];
 
@@ -65,7 +69,9 @@ const Offergrid = () => {
                             <Subtitletypo>
                                 A one-stop platform for all your fashion needs,<br></br> hassle-free. Buy with a peace of mind.
                             </Subtitletypo>
-                            <StyledButton>buy now</StyledButton>
+                            <StyledButton onClick={handleClick} variant="contained"
+                                component={Link}
+                                to="/products">buy now</StyledButton>
                         </Box>
                     </Box>
                 </Grid>
@@ -75,7 +81,9 @@ const Offergrid = () => {
                             <Titletypo>Buy 2 Get 1 Free</Titletypo>
                             <Subtitletypo>
                                 End of season sale. Buy any 2 items of your choice  and get 1 free.                        </Subtitletypo>
-                            <StyledButton>buy now</StyledButton>
+                            <StyledButton onClick={handleClick} variant="contained"
+                                component={Link}
+                                to="/products">buy now</StyledButton>
                         </Box>
                     </Box>
 

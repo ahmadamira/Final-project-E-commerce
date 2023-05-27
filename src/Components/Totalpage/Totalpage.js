@@ -11,7 +11,7 @@ import { Container } from '@mui/system';
 import Box from '@mui/material/Box';
 import { Button, Typography } from '@mui/material';
 import { styled } from '@mui/system';
-
+import { Link } from 'react-router-dom';
 const Styledtypo = styled(Typography)(({ theme }) => ({
 
 
@@ -31,8 +31,11 @@ function createData(name, price, quantity) {
 }
 
 const rows = [createData('Frozen yoghurt', 159, 1)];
+const handleClick = () => {
 
-export default function BasicTable() {
+    window.scrollTo(0, 0);
+};
+export default function Totalpage() {
     const [tableRows, setTableRows] = React.useState(rows);
 
     const handleQuantityChange = (event, name) => {
@@ -136,9 +139,11 @@ export default function BasicTable() {
                     </Table>
                 </TableContainer>
                 <Box marginTop={2} textAlign='left'>
-                    <Button variant="contained" color="primary" sx={{ backgroundColor: '#D6763C', mt: '41px' }}>
-                        Proceed to Checkout
-                    </Button>
+                    <Link to="/checkout" style={{ textDecoration: 'none' }} onClick={handleClick}>
+                        <Button variant="contained" color="primary" sx={{ backgroundColor: '#D6763C', mt: '41px' }}>
+                            Proceed to Checkout
+                        </Button>
+                    </Link>
                 </Box>
             </Container>
 

@@ -1,15 +1,16 @@
-import React from 'react'
-import Hero from './Herosec/Hero'
-import Service from './Service-card/Service'
-import Offer from './Offers-card/Offer'
-import Newarrivals from './New-arrivals-grid/Newarrivals'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Hero from './Herosec/Hero';
+import Service from './Service-card/Service';
+import Offer from './Offers-card/Offer';
+import Newarrivals from './New-arrivals-grid/Newarrivals';
 import { styled } from '@mui/system';
-
 import { Box, Typography, Button, useTheme, Container } from "@mui/material";
-import Servicegrid from './Service-grid/Servicegrid'
-import Offergrid from './Offergrid/Offergrid'
-import Topseller from './Topseller/Topseller'
-import Sec from './Sec/Sec'
+import Servicegrid from './Service-grid/Servicegrid';
+import Offergrid from './Offergrid/Offergrid';
+import Topseller from './Topseller/Topseller';
+import Sec from './Sec/Sec';
+
 const Stbox = styled(Box)(({ theme }) => ({
     display: 'flex',
     justifyContent: 'center',
@@ -17,9 +18,11 @@ const Stbox = styled(Box)(({ theme }) => ({
     flexDirection: 'column',
     marginTop: '48px',
     marginBottom: '48px',
-
 }));
+const handleClick = () => {
 
+    window.scrollTo(0, 0);
+};
 const Home = () => {
     return (
         <div>
@@ -32,7 +35,10 @@ const Home = () => {
             <Topseller />
             <Stbox>
                 <Button
+                    onClick={handleClick}
                     variant="contained"
+                    component={Link}
+                    to="/products"
                     sx={{
                         backgroundColor: '#024E82',
                         color: '#FFFFFF',
@@ -41,9 +47,8 @@ const Home = () => {
                     SHOP NOW
                 </Button>
             </Stbox>
-
         </div>
-    )
+    );
 }
 
-export default Home
+export default Home;

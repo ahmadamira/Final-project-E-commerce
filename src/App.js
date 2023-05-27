@@ -15,12 +15,15 @@ import Loginpage from "./Components/Loginpage/Loginpage";
 import SignUp from "./Components/Signuppage/Signup";
 import BasicTable from "./Components/Totalpage/Totalpage";
 import Checkoutpage from "./Components/Checkoutpage/Checkoutpage";
+import Routers from "./Routes";
+import { Link } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <Checkoutpage />
+
+      <Routers />
       <Footer />
     </div>
   );
