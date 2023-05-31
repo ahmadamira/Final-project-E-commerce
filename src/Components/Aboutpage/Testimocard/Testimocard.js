@@ -28,6 +28,7 @@ const Testimcard = (props) => {
             <Box
                 mr={{ xs: 0, md: 2 }}
                 maxWidth={{ sm: '100%', md: '200px', lg: '210px' }}
+                sx={{ pr: '10px' }}
 
 
             >

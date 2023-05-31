@@ -6,31 +6,34 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 
-const Cardcom = () => {
+const handleClick = () => {
+    window.scrollTo(0, 0);
+};
+
+const Cardcom = (props) => {
+    const { img, price, title, id } = props;
+
+    const productLink = `/product/${id}`;
+
     return (
-        <Link to="/product" style={{ textDecoration: 'none' }}>
+        <Link onClick={handleClick} to={productLink} style={{ textDecoration: 'none' }}>
             <Card sx={{ maxWidth: 295, height: 450, mb: 3 }}>
                 <CardActionArea>
-                    <CardMedia
-                        component="img"
-                        height="100%"
-                        image="/imgs/cardimg.png"
-                        alt="green iguana"
-                    />
+                    <CardMedia component="img" height="342px" image={img} alt="T-shirt" />
                     <CardContent>
-                        <Typography gutterBottom variant="h5">
-                            Plain White Shirt
+                        <Typography gutterBottom variant="h6" width="100%">
+                            {title}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
                 <CardActions sx={{ justifyContent: 'center' }}>
                     <Button size="small" color="primary">
-                        $29.00
+                        ${price}
                     </Button>
                 </CardActions>
             </Card>
         </Link>
     );
-}
+};
 
 export default Cardcom;

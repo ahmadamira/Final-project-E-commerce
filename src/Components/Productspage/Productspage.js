@@ -5,22 +5,25 @@ import Abouthero from '../Aboutpage/Abouthero/Abouthero';
 import { Box } from '@mui/system';
 import Sec from '../Home-page/Sec/Sec';
 
+import { useParams } from 'react-router-dom';
+import { Productsdata } from '../Data/Data';
+
+const products = Object.values(Productsdata);
 
 const Productspage = () => {
-    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const { id } = useParams();
 
     return (
-        <Box >
+        <Box>
             <Abouthero img="/imgs/about.jpg" text="Shop Now" />
             <Sec title={"Discover Our Products"} />
             <Box sx={{ mb: '100px' }}>
                 <Container maxWidth="lg">
-
                     <Grid container spacing={2} justifyContent="center">
-                        {arr.map((data) => (
-                            <Grid item key={data} xs={12} sm={6} md={4} lg={3} xl={3}>
+                        {products.map((data) => (
+                            <Grid item key={data.id} xs={12} sm={6} md={4} lg={3} xl={3}>
                                 <Grid container justifyContent="center">
-                                    <Cardcom />
+                                    <Cardcom img={data.images[0]} title={data.totalInfo.title} price={data.totalInfo.price} id={data.id} />
                                 </Grid>
                             </Grid>
                         ))}

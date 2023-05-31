@@ -1,17 +1,19 @@
 import React from 'react';
 import { Container, Grid } from '@mui/material';
 import Cardcom from '../../Card-com/Card';
+import { Productsdata } from '../../Data/Data';
 
+const products = Object.values(Productsdata);
 const Topseller = () => {
-    const arr = [1, 2, 3, 4];
+
 
     return (
         <Container maxWidth="lg">
             <Grid container spacing={2} justifyContent="center">
-                {arr.map((data) => (
+                {products.slice(10, 14).map((data) => (
                     <Grid item key={data} xs={12} sm={6} md={4} lg={3} xl={3}>
                         <Grid container justifyContent="center">
-                            <Cardcom />
+                            <Cardcom img={data.images[0]} title={data.totalInfo.title} price={data.totalInfo.price} id={data.id} />
                         </Grid>
                     </Grid>
                 ))}
