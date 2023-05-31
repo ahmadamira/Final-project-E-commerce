@@ -1,12 +1,14 @@
 import React from 'react';
 import { Container, Grid } from '@mui/material';
 import Cardcom from '../../Card-com/Card';
-import { Productsdata } from '../../Data/Data';
+import { useContext } from 'react';
 
-const products = Object.values(Productsdata);
+import Productcontext from '../../../Context/Productscontext';
+
+
 
 const Newarrivals = () => {
-
+  const { products } = useContext(Productcontext)
 
   return (
     <Container maxWidth="lg">

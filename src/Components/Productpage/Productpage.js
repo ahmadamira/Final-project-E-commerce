@@ -1,16 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Typography, Grid, Container, Box, Select, MenuItem, Button } from '@mui/material';
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 import Tabscom from './Tabscom/Tabscom';
 import { useParams } from 'react-router-dom';
 import { Productsdata } from '../Data/Data';
+import { Carttotalcontext } from '../../Context/Carttotalcontext';
+import Productcontext from '../../Context/Productscontext';
 
-const products = Object.values(Productsdata);
+
 
 const Productpage = () => {
+    const { products } = useContext(Productcontext)
     const { id } = useParams();
     const element = products.find((item) => item.id === Number(id));
+
+    const { cartTotal, addItem } = useContext(Carttotalcontext);
+
+    const handleAddToCartin = () => {
+
+        addItem(element); alert("Item added to cart")
+    };
+    const handleAddToCart = () => {
+
+        {
+            cartTotal.find((item) => item.id === Number(id)) ? alert("You already have this item in your cart") :
+                handleAddToCartin();
+        }
+    };
 
     return (
         <Box>
@@ -45,7 +62,7 @@ const Productpage = () => {
                                 </Select>
                             </Box>
                             <Box mt={4}>
-                                <Button variant="contained" color="primary">
+                                <Button variant="contained" color="primary" onClick={handleAddToCart}>
                                     Add to Cart
                                 </Button>
                             </Box>

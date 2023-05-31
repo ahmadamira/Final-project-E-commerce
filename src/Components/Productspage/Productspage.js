@@ -4,14 +4,12 @@ import Cardcom from '../Card-com/Card';
 import Abouthero from '../Aboutpage/Abouthero/Abouthero';
 import { Box } from '@mui/system';
 import Sec from '../Home-page/Sec/Sec';
-
+import { useContext } from 'react';
+import Productcontext from '../../Context/Productscontext';
 import { useParams } from 'react-router-dom';
-import { Productsdata } from '../Data/Data';
-
-const products = Object.values(Productsdata);
-
 const Productspage = () => {
     const { id } = useParams();
+    const { products } = useContext(Productcontext)
 
     return (
         <Box>

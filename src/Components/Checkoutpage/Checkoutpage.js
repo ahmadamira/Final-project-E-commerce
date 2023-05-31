@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Container, Typography, TextField, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import { Box } from '@mui/system';
+import { Carttotalcontext } from '../../Context/Carttotalcontext';
 
 const Checkoutpage = () => {
+    const { cartTotal } = useContext(Carttotalcontext);
+
     const [fullName, setFullName] = useState('');
     const [streetAddress, setStreetAddress] = useState('');
     const [townCity, setTownCity] = useState('');
@@ -12,12 +15,12 @@ const Checkoutpage = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        // Handle form submission and place order
     };
 
     return (
         <Box sx={{ mt: '97px', mb: '50px' }}>
-
-            <Container maxWidth="lg" >
+            <Container maxWidth="lg">
                 <Typography variant="h4" textAlign='left' sx={{ marginBottom: '1rem' }}>
                     Billing Details
                 </Typography>
@@ -66,43 +69,51 @@ const Checkoutpage = () => {
                     />
 
                 </form>
-                <Typography variant="h4" textAlign='left' sx={{ marginBottom: '1rem' }}>
-                    Your order
+
+                <Typography variant="h4" textAlign='left' sx={{ marginBottom: '1rem', marginTop: '2rem' }}>
+                    Your Order
                 </Typography>
 
-                <TableContainer component={Paper} sx={{ marginTop: '2rem', width: '100%' }}>
+                <TableContainer component={Paper} sx={{ marginTop: '1rem', width: '100%' }}>
                     <Table>
                         <TableHead>
                             <TableRow>
-                                <TableCell><Typography variant='h6'>Product</Typography></TableCell>
-                                <TableCell><Typography variant='h6'>Total</Typography></TableCell>
+                                <TableCell>
+                                    <Typography variant='h6'>Product</Typography>
+                                </TableCell>
+                                <TableCell>
+                                    <Typography variant='h6'>Total</Typography>
+                                </TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            <TableRow>
-                                <TableCell>Plain White Shirt</TableCell>
-                                <TableCell>$59.00</TableCell>
-                            </TableRow>
+                            {cartTotal.map((item) => (
+                                <TableRow key={item.totalInfo.title}>
+                                    <TableCell>{item.totalInfo.title}</TableCell>
+                                    <TableCell>${item.totalInfo.price.toFixed(2)}</TableCell>
+                                </TableRow>
+                            ))}
                             <TableRow>
                                 <TableCell>Subtotal</TableCell>
-                                <TableCell>$59.00</TableCell>
+                                <TableCell>${cartTotal.reduce((acc, item) => acc + item.totalInfo.price, 0).toFixed(2)}</TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell></TableCell>
-                                <TableCell>$59.00</TableCell>
+                                <TableCell>${cartTotal.reduce((acc, item) => acc + item.totalInfo.price, 0).toFixed(2)}</TableCell>
                             </TableRow>
                         </TableBody>
                     </Table>
-                </TableContainer>
-                <Box component={Paper} display='flex' flexDirection='column' justifyContent='space-around' height='245.38px' sx={{ marginTop: '1rem' }}>
-                    <Box backgroundColor='#FBFBFB' textAlign='center' sx={{ ml: '24px', mr: '24px' }}>
-                        <Typography color='#555555' variant="body1" sx={{ marginRight: '1rem', pt: '25px', pb: '25px', pl: '16px' }} textAlign='left'>Cash on delivery.  Please contact us if you require assistance or wish to make alternate arrangements.</Typography>
+                    <Box component={Paper} display='flex' flexDirection='column' justifyContent='space-around' height='245.38px' sx={{ marginTop: '1rem' }}>
+                        <Box backgroundColor='#FBFBFB' textAlign='center' sx={{ ml: '24px', mr: '24px' }}>
+                            <Typography color='#555555' variant="body1" sx={{ marginRight: '1rem', pt: '25px', pb: '25px', pl: '16px' }} textAlign='left'>Cash on delivery.  Please contact us if you require assistance or wish to make alternate arrangements.</Typography>
+                        </Box>
+                        <Box textAlign='right'><Button variant="contained" color="primary" sx={{ backgroundColor: '#D6763C' }} >place order</Button></Box>
                     </Box>
-                    <Box textAlign='right'><Button variant="contained" color="primary" sx={{ backgroundColor: '#D6763C' }} >place order</Button></Box>
-                </Box>
+                </TableContainer>
             </Container>
         </Box>
     );
 }
 
 export default Checkoutpage;
+

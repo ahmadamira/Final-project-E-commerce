@@ -1,20 +1,16 @@
-import * as React from 'react';
-import classes from './Totalpage.module.css';
+import React, { useContext, useState } from 'react';
+import { Carttotalcontext } from '../../Context/Carttotalcontext';
+import { Container, Box, Button, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { Container } from '@mui/system';
-import Box from '@mui/material/Box';
-import { Button, Typography } from '@mui/material';
 import { styled } from '@mui/system';
-import { Link } from 'react-router-dom';
+
 const Styledtypo = styled(Typography)(({ theme }) => ({
-
-
     fontFamily: 'Arimo',
     fontStyle: 'normal',
     fontWeight: '700',
@@ -23,20 +19,19 @@ const Styledtypo = styled(Typography)(({ theme }) => ({
     display: 'flex',
     alignItems: 'flex-end',
     color: '#1D1D1D',
-    marginBottom: '31PX',
+    marginBottom: '31px',
 }));
 
 function createData(name, price, quantity) {
-    return { name, price, quantity, total: price * quantity };
+    return { name, price, quantity, total: price * quantity || price };
 }
 
-const rows = [createData('Frozen yoghurt', 159, 1)];
-const handleClick = () => {
-
-    window.scrollTo(0, 0);
-};
 export default function Totalpage() {
-    const [tableRows, setTableRows] = React.useState(rows);
+    const { cartTotal, removeItem } = useContext(Carttotalcontext);
+
+    const [tableRows, setTableRows] = useState(
+        cartTotal.map((item) => createData(item.totalInfo.title, item.totalInfo.price, item.totalInfo.quantity))
+    );
 
     const handleQuantityChange = (event, name) => {
         const { value } = event.target;
@@ -46,26 +41,39 @@ export default function Totalpage() {
                 : row
         );
         setTableRows(updatedRows);
+
+        const updatedCartTotal = cartTotal.map((item) =>
+            item.name === name ? { ...item, quantity: Number(value) } : item
+        );
     };
+
+    const handleClick = () => {
+        window.scrollTo(0, 0);
+    };
+
+    const handleDelete = (name) => {
+        const updatedRows = tableRows.filter((row) => row.name !== name);
+        const element = cartTotal.find((item) => item.totalInfo.title === name);
+        setTableRows(updatedRows);
+        removeItem(element);
+    };
+
+    // Calculate the subtotal and total from the tableRows state
+    const subtotal = tableRows.reduce((acc, row) => acc + row.total, 0);
+    const total = subtotal; // Update the total to match the subtotal
 
     return (
         <Container maxWidth="lg" style={{ marginTop: '137px' }}>
-            <Container >
-                <TableContainer >
-                    <Table aria-label="simple table" >
+            <Container>
+                <TableContainer>
+                    <Table aria-label="simple table">
                         <TableHead>
                             <TableRow>
                                 <TableCell></TableCell>
-                                <TableCell align="left" >Product</TableCell>
-                                <TableCell align="left" >
-                                    Price ($)
-                                </TableCell>
-                                <TableCell align="left" >
-                                    Quantity
-                                </TableCell>
-                                <TableCell align="left" >
-                                    Total
-                                </TableCell>
+                                <TableCell align="left">Product</TableCell>
+                                <TableCell align="left">Price ($)</TableCell>
+                                <TableCell align="left">Quantity</TableCell>
+                                <TableCell align="left">Total</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -74,22 +82,17 @@ export default function Totalpage() {
                                     key={row.name}
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
-                                    <TableCell >
-                                        {/* onClick={() => handleDeleteRow(row.name)} */}
-                                        <Button
-                                            sx={{ color: '#818181' }}
-                                        >
+                                    <TableCell>
+                                        <Button sx={{ color: '#818181' }} onClick={() => handleDelete(row.name)}>
                                             x
                                         </Button>
                                     </TableCell>
                                     <TableCell align="left">{row.name}</TableCell>
+                                    <TableCell align="left">{row.price}</TableCell>
                                     <TableCell align="left">
-                                        {row.price}
-                                    </TableCell>
-                                    <TableCell align="left" >
                                         <input
                                             type="number"
-                                            value={row.quantity}
+                                            value={row.quantity || 1}
                                             onChange={(event) => handleQuantityChange(event, row.name)}
                                             contentEditable={true}
                                             style={{
@@ -100,13 +103,11 @@ export default function Totalpage() {
                                                 top: '331.98px',
                                                 background: '#FFFFFF',
                                                 border: '2px solid #EBEBEB',
-                                                textAlign: 'center'
+                                                textAlign: 'center',
                                             }}
                                         />
                                     </TableCell>
-                                    <TableCell align="left" >
-                                        {row.total}
-                                    </TableCell>
+                                    <TableCell align="left">{row.total}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -114,18 +115,13 @@ export default function Totalpage() {
                 </TableContainer>
             </Container>
             <Container style={{ marginTop: '83px', marginBottom: '107px' }}>
-                <Styledtypo textAlign='left'>Cart Totals</Styledtypo>
+                <Styledtypo textAlign="left">Cart Totals</Styledtypo>
                 <TableContainer>
                     <Table style={{ width: '50%', marginLeft: 0 }}>
-                        <TableHead>
-                            <TableRow>
-
-                            </TableRow>
-                        </TableHead>
                         <TableBody>
                             <TableRow>
                                 <TableCell>Subtotal</TableCell>
-                                <TableCell>$59.00</TableCell>
+                                <TableCell>${subtotal.toFixed(2)}</TableCell> {/* Display the calculated subtotal */}
                             </TableRow>
                             <TableRow>
                                 <TableCell>Shipping Free</TableCell>
@@ -133,12 +129,12 @@ export default function Totalpage() {
                             </TableRow>
                             <TableRow>
                                 <TableCell>Total</TableCell>
-                                <TableCell>$59.00</TableCell>
+                                <TableCell>${total.toFixed(2)}</TableCell> {/* Display the calculated total */}
                             </TableRow>
                         </TableBody>
                     </Table>
                 </TableContainer>
-                <Box marginTop={2} textAlign='left'>
+                <Box marginTop={2} textAlign="left">
                     <Link to="/checkout" style={{ textDecoration: 'none' }} onClick={handleClick}>
                         <Button variant="contained" color="primary" sx={{ backgroundColor: '#D6763C', mt: '41px' }}>
                             Proceed to Checkout
@@ -146,7 +142,6 @@ export default function Totalpage() {
                     </Link>
                 </Box>
             </Container>
-
         </Container>
     );
 }

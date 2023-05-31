@@ -17,13 +17,19 @@ import BasicTable from "./Components/Totalpage/Totalpage";
 import Checkoutpage from "./Components/Checkoutpage/Checkoutpage";
 import Routers from "./Routes";
 import { Link } from "react-router-dom";
+import Productsprovider from "./Provider/Productsprovider";
+import Carttotalcontext from "./Context/Carttotalcontext";
+import Carttotalprovider from "./Provider/Carttotalprovider";
 
 function App() {
   return (
     <div className="App">
       <Header />
-
-      <Routers />
+      <Carttotalprovider>
+        <Productsprovider>
+          <Routers />
+        </Productsprovider>
+      </Carttotalprovider>
       <Footer />
     </div>
   );
