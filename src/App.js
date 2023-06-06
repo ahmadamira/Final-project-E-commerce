@@ -20,14 +20,16 @@ import { Link } from "react-router-dom";
 import Productsprovider from "./Provider/Productsprovider";
 import Carttotalcontext from "./Context/Carttotalcontext";
 import Carttotalprovider from "./Provider/Carttotalprovider";
-
+import { SnackbarProvider, enqueueSnackbar } from 'notistack';
 function App() {
   return (
     <div className="App">
       <Header />
       <Carttotalprovider>
         <Productsprovider>
-          <Routers />
+          <SnackbarProvider>
+            <Routers />
+          </SnackbarProvider>
         </Productsprovider>
       </Carttotalprovider>
       <Footer />

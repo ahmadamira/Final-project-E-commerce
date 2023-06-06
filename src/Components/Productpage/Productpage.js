@@ -7,24 +7,27 @@ import { useParams } from 'react-router-dom';
 import { Productsdata } from '../Data/Data';
 import { Carttotalcontext } from '../../Context/Carttotalcontext';
 import Productcontext from '../../Context/Productscontext';
-
+import { useSnackbar } from 'notistack';
 
 
 const Productpage = () => {
     const { products } = useContext(Productcontext)
     const { id } = useParams();
     const element = products.find((item) => item.id === Number(id));
+    const { enqueueSnackbar } = useSnackbar();
 
     const { cartTotal, addItem } = useContext(Carttotalcontext);
 
     const handleAddToCartin = () => {
 
-        addItem(element); alert("Item added to cart")
+        addItem(element);
+
+        enqueueSnackbar("Item added to cart", { variant: "success" });
     };
     const handleAddToCart = () => {
 
         {
-            cartTotal.find((item) => item.id === Number(id)) ? alert("You already have this item in your cart") :
+            cartTotal.find((item) => item.id === Number(id)) ? enqueueSnackbar("You already have this item in your cart", { variant: "warning" }) :
                 handleAddToCartin();
         }
     };
