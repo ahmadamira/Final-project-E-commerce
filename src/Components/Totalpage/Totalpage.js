@@ -121,7 +121,7 @@ export default function Totalpage() {
                         <TableBody>
                             <TableRow>
                                 <TableCell>Subtotal</TableCell>
-                                <TableCell>${subtotal.toFixed(2)}</TableCell> {/* Display the calculated subtotal */}
+                                <TableCell>${subtotal.toFixed(2)}</TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell>Shipping Free</TableCell>
@@ -129,7 +129,7 @@ export default function Totalpage() {
                             </TableRow>
                             <TableRow>
                                 <TableCell>Total</TableCell>
-                                <TableCell>${total.toFixed(2)}</TableCell> {/* Display the calculated total */}
+                                <TableCell>${total.toFixed(2)}</TableCell>
                             </TableRow>
                         </TableBody>
                     </Table>
