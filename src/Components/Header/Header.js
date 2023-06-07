@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -17,6 +17,9 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import CasesOutlinedIcon from '@mui/icons-material/CasesOutlined';
 import AdbIcon from '@mui/icons-material/Adb';
 import { UserAuth } from '../../Context/Authcontext';
+import { Badge } from '@mui/material';
+import styled from '@emotion/styled';
+import { Carttotalcontext } from '../../Context/Carttotalcontext';
 
 
 const pages = ['Home', 'About', 'Contactus'];
@@ -27,10 +30,14 @@ function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const { user, logout } = UserAuth();
   const navigate = useNavigate();
+  const { cartTotal, deleteItem } = useContext(Carttotalcontext);
   const handleClick = async () => {
     try {
       await logout();
-      navigate('/login');
+      navigate('/');
+      for (let i = 0; i < cartTotal.length; i = i + 1) {
+        deleteItem(cartTotal[i]);
+      }
       console.log('You are logged out')
     } catch (e) {
       console.log(e.message);
@@ -104,7 +111,15 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Button
+                    key={page}
+                    component={Link}
+                    to={page === 'Home' ? '/' : '/' + page.toLowerCase()}
+                    onClick={handleCloseNavMenu}
+                    sx={{ color: 'black' }}
+                  >
+                    {page}
+                  </Button>
                 </MenuItem>
               ))}
             </Menu>
@@ -127,8 +142,7 @@ function ResponsiveAppBar() {
           >
             NorthStar
           </Typography>
-
-          {user && <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
                 key={page}
@@ -140,17 +154,24 @@ function ResponsiveAppBar() {
                 {page}
               </Button>
             ))}
-          </Box>}
-          {user && <Box><Link to="/total" style={{ textDecoration: 'none' }}>
+          </Box>
+          {user ? <Box><Link to="/total" style={{ textDecoration: 'none' }}>
             <button onClick={handleClick} title="Log out" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
-              <PermIdentityOutlinedIcon sx={{ color: 'black', position: 'relative', pr: 1.5 }} />
+              <Badge badgeContent={0} color="primary">
+                <PermIdentityOutlinedIcon sx={{ color: 'black', position: 'relative', pr: 1.5 }} />
+              </Badge>
             </button>
           </Link>
-            <Link to="/total" style={{ textDecoration: 'none' }}>
-              <CasesOutlinedIcon
-                sx={{ color: 'black', position: 'relative', pr: 1.5 }}
-              />
-            </Link></Box>}
+            <Badge badgeContent={cartTotal.length} color="primary">
+              <Link to="/total" style={{ textDecoration: 'none' }}>
+
+                <CasesOutlinedIcon
+                  sx={{ color: 'black', position: 'relative', pr: 1.5 }}
+                />
+
+              </Link>
+            </Badge>
+          </Box> : <Link to="/login" style={{ textDecoration: 'none' }}> <Button>Log in</Button></Link>}
           {/* <Box sx={{ flexGrow: 0 }}>
             <Box>
               <Tooltip title="Open settings">

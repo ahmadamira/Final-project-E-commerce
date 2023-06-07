@@ -21,7 +21,7 @@ const Productpage = () => {
     const handleAddToCartin = () => {
 
         addItem(element);
-
+        console.log(element)
         enqueueSnackbar("Item added to cart", { variant: "success" });
     };
     const handleAddToCart = () => {

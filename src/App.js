@@ -27,15 +27,17 @@ function App() {
     <div className="App">
 
       <AuthContextProvider>
-        <Header />
+
         <Carttotalprovider>
           <Productsprovider>
             <SnackbarProvider>
+              <Header />
               <Routers />
+              <Footer />
             </SnackbarProvider>
           </Productsprovider>
         </Carttotalprovider>
-        <Footer />
+
       </AuthContextProvider>
 
     </div>
