@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -16,6 +16,8 @@ import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import CasesOutlinedIcon from '@mui/icons-material/CasesOutlined';
 import AdbIcon from '@mui/icons-material/Adb';
+import { UserAuth } from '../../Context/Authcontext';
+
 
 const pages = ['Home', 'About', 'Contactus'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -23,6 +25,17 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const { user, logout } = UserAuth();
+  const navigate = useNavigate();
+  const handleClick = async () => {
+    try {
+      await logout();
+      navigate('/login');
+      console.log('You are logged out')
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -114,7 +127,8 @@ function ResponsiveAppBar() {
           >
             NorthStar
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+
+          {user && <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
                 key={page}
@@ -126,18 +140,18 @@ function ResponsiveAppBar() {
                 {page}
               </Button>
             ))}
-          </Box>
-          <Link to="/total" style={{ textDecoration: 'none' }}>
-            <PermIdentityOutlinedIcon
-              sx={{ color: 'black', position: 'relative', pr: 1.5 }}
-            />
+          </Box>}
+          {user && <Box><Link to="/total" style={{ textDecoration: 'none' }}>
+            <button onClick={handleClick} title="Log out" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
+              <PermIdentityOutlinedIcon sx={{ color: 'black', position: 'relative', pr: 1.5 }} />
+            </button>
           </Link>
-          <Link to="/total" style={{ textDecoration: 'none' }}>
-            <CasesOutlinedIcon
-              sx={{ color: 'black', position: 'relative', pr: 1.5 }}
-            />
-          </Link>
-          <Box sx={{ flexGrow: 0 }}>
+            <Link to="/total" style={{ textDecoration: 'none' }}>
+              <CasesOutlinedIcon
+                sx={{ color: 'black', position: 'relative', pr: 1.5 }}
+              />
+            </Link></Box>}
+          {/* <Box sx={{ flexGrow: 0 }}>
             <Box>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -166,7 +180,7 @@ function ResponsiveAppBar() {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box> */}
         </Toolbar>
       </Container>
     </AppBar>

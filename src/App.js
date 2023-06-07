@@ -21,18 +21,23 @@ import Productsprovider from "./Provider/Productsprovider";
 import Carttotalcontext from "./Context/Carttotalcontext";
 import Carttotalprovider from "./Provider/Carttotalprovider";
 import { SnackbarProvider, enqueueSnackbar } from 'notistack';
+import { AuthContextProvider } from "./Context/Authcontext";
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Carttotalprovider>
-        <Productsprovider>
-          <SnackbarProvider>
-            <Routers />
-          </SnackbarProvider>
-        </Productsprovider>
-      </Carttotalprovider>
-      <Footer />
+
+      <AuthContextProvider>
+        <Header />
+        <Carttotalprovider>
+          <Productsprovider>
+            <SnackbarProvider>
+              <Routers />
+            </SnackbarProvider>
+          </Productsprovider>
+        </Carttotalprovider>
+        <Footer />
+      </AuthContextProvider>
+
     </div>
   );
 }

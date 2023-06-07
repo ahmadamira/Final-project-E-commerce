@@ -44,14 +44,14 @@ const Productpage = () => {
                     <Grid item xs={12} sm={6}>
                         <Box textAlign="left">
                             <Typography variant="h4" gutterBottom>
-                                {element.totalInfo.title}
+                                {element.title}
                             </Typography>
-                            <Rating name="half-rating" defaultValue={element.totalInfo.rating} precision={0.5} mt={4} />
+                            <Rating name="half-rating" defaultValue={element.rating} precision={0.5} mt={4} />
                             <Typography variant="h5" gutterBottom mt={4}>
-                                <span style={{ color: 'blue' }}> ${element.totalInfo.price}</span>
+                                <span style={{ color: 'blue' }}> ${element.price}</span>
                             </Typography>
                             <Typography variant="body1" gutterBottom mt={4}>
-                                {element.totalInfo.description}
+                                {element.description}
                             </Typography>
                             <Box mt={4}>
                                 <Typography variant="body1" gutterBottom>

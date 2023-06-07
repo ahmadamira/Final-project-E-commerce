@@ -33,9 +33,9 @@ export default function Totalpage() {
     const [tableRows, setTableRows] = useState(
         cartTotal.map((item) =>
             createData(
-                item.totalInfo.title,
-                item.totalInfo.price,
-                item.totalInfo.quantity
+                item.title,
+                item.price,
+                item.quantity
             )
         )
     );
@@ -43,9 +43,9 @@ export default function Totalpage() {
         setTableRows(
             cartTotal.map((item) =>
                 createData(
-                    item.totalInfo.title,
-                    item.totalInfo.price,
-                    item.totalInfo.quantity
+                    item.title,
+                    item.price,
+                    item.quantity
                 )
             )
         );
@@ -62,9 +62,9 @@ export default function Totalpage() {
 
         // Check if the quantity is decreased
 
-        const item = cartTotal.find((item) => item.totalInfo.title === name);
+        const item = cartTotal.find((item) => item.title === name);
 
-        if (Number(value) < item.totalInfo.quantity) {
+        if (Number(value) < item.quantity) {
             removeItem(item);
         } else {
             addItem(item);
@@ -81,7 +81,7 @@ export default function Totalpage() {
 
     const handleDelete = (name) => {
         const updatedRows = tableRows.filter((row) => row.name !== name);
-        const element = cartTotal.find((item) => item.totalInfo.title === name);
+        const element = cartTotal.find((item) => item.title === name);
         setTableRows(updatedRows);
         deleteItem(element);
     };

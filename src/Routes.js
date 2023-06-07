@@ -10,21 +10,22 @@ import Checkoutpage from './Components/Checkoutpage/Checkoutpage'
 import Loginpage from './Components/Loginpage/Loginpage'
 import SignUp from './Components/Signuppage/Signup'
 import Productspage from './Components/Productspage/Productspage'
+import ProtectedRoute from './Components/ProtectedRout/ProtectedRout'
 const Routers = () => {
     return (
 
         <Routes>
-            <Route path='/' element={<Home />}></Route>
-            <Route path='/about' element={<Aboutpage />}></Route>
-            <Route path='/Contactus' element={<ContactForm />}></Route>
-            <Route path='/product/:id' element={<Productpage />}></Route>
-            <Route path='/total' element={<Totalpage />}></Route>
-            <Route path='/checkout' element={<Checkoutpage />}></Route>
+            <Route path='/' element={<ProtectedRoute><Home /></ProtectedRoute>}></Route>
+            <Route path='/about' element={<ProtectedRoute><Aboutpage /></ProtectedRoute>}></Route >
+            <Route path='/Contactus' element={<ProtectedRoute><ContactForm /></ProtectedRoute>}></Route>
+            <Route path='/product/:id' element={<ProtectedRoute><Productpage /></ProtectedRoute>}></Route>
+            <Route path='/total' element={<ProtectedRoute><Totalpage /></ProtectedRoute>}></Route>
+            <Route path='/checkout' element={<ProtectedRoute><Checkoutpage /></ProtectedRoute>}></Route>
             <Route path='/login' element={<Loginpage />}></Route>
             <Route path='/signup' element={<SignUp />}></Route>
-            <Route path='/products' element={<Productspage />}></Route>
+            <Route path='/products' element={<ProtectedRoute><Productspage /></ProtectedRoute>}></Route>
 
-        </Routes>
+        </Routes >
 
     )
 }
