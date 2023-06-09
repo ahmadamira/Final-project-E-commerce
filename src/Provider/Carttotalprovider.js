@@ -3,16 +3,13 @@ import { Carttotalcontext } from '../Context/Carttotalcontext';
 import { UserAuth } from '../Context/Authcontext';
 
 const Carttotalprovider = ({ children }) => {
-    const { user } = UserAuth(); // Access the user object from the UserAuth context
     const [cartTotal, setCartTotal] = useState([]);
     const [flag, setFlag] = useState(false);
 
     useEffect(() => {
-        // Store the cart total in the session storage whenever it changes
         if (cartTotal.length !== 0 || flag) {
             sessionStorage.setItem('cartTotal', JSON.stringify(cartTotal));
             setFlag(false)
-            // Store the cart total in the database
         }
 
 
@@ -22,7 +19,6 @@ const Carttotalprovider = ({ children }) => {
     useEffect(() => {
         const storedCartTotal = sessionStorage.getItem('cartTotal');
         if (storedCartTotal) {
-
             setCartTotal(JSON.parse(storedCartTotal));
         }
     }, []);

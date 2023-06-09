@@ -38,7 +38,6 @@ function ResponsiveAppBar() {
       for (let i = 0; i < cartTotal.length; i = i + 1) {
         deleteItem(cartTotal[i]);
       }
-      console.log('You are logged out')
     } catch (e) {
       console.log(e.message);
     }

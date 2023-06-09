@@ -162,7 +162,7 @@ const Checkoutpage = () => {
                                     <TableRow key={item.title}>
                                         <TableCell>
                                             {item.title} ({item.quantity})
-                                            {console.log(item.quantity)}
+
                                         </TableCell>
                                         <TableCell>
                                             $
