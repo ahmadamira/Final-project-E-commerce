@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Button, useTheme, Container } from "@mui/material";
 import classes from "./Hero.module.css";
-
+import { Link } from 'react-router-dom';
 const Hero = () => {
   const theme = useTheme();
   return (
@@ -42,6 +42,9 @@ const Hero = () => {
           </Typography>
           <Button
             variant="contained"
+            component={Link}
+            to="/products"
+
             sx={{
               backgroundColor: "transparent",
               border: "3px solid white",
@@ -51,8 +54,8 @@ const Hero = () => {
             SHOP NOW
           </Button>
         </Box>
-      </Container>
-    </Box>
+      </Container >
+    </Box >
   );
 };
 

@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { Typography, TextField, Button, Grid, Box } from '@mui/material';
 import { Container } from '@mui/system';
 import Abouthero from '../Aboutpage/Abouthero/Abouthero';
+import { useSnackbar } from 'notistack';
 
 const ContactForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
-
+    const { enqueueSnackbar } = useSnackbar();
     const handleNameChange = (event) => {
         setName(event.target.value);
     };
@@ -22,9 +23,31 @@ const ContactForm = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log('Name:', name);
-        console.log('Email:', email);
-        console.log('Message:', message);
+
+        const formData = {
+            name,
+            email,
+            message,
+        };
+        const fetchData = async () => {
+            try {
+                await fetch("https://e-commerce-final-da38d-default-rtdb.firebaseio.com/ messages.json", {
+                    method: "POST", headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(formData),
+                })
+            } catch (error) {
+                console.log('Error fetching products:', error);
+            }
+            enqueueSnackbar("message sent successfully", { variant: "success" })
+            setName("");
+            setEmail("");
+            setMessage("");
+
+
+        }
+        fetchData();
     };
 
     return (
@@ -60,6 +83,7 @@ const ContactForm = () => {
                                         required
                                         fullWidth
                                         type="email"
+
                                     />
                                 </Grid>
                             </Grid>

@@ -1,9 +1,9 @@
 import React from 'react';
-import { styled } from '@mui/system';
+import { Container, styled } from '@mui/system';
 import { Box, Typography } from '@mui/material';
 
 const HeroSection = styled(Box)(({ theme, backgroundImage }) => ({
-    position: 'relative',
+    // position: 'relative',
     height: '348px',
     background: `url('${backgroundImage}')`,
     backgroundSize: 'cover',
@@ -31,9 +31,11 @@ const Title = styled(Typography)(({ theme }) => ({
 const Abouthero = ({ img, text }) => {
     return (
         <HeroSection backgroundImage={img}>
-            <TextContainer>
-                <Title>{text}</Title>
-            </TextContainer>
+            <Container maxWidth="lg" sx={{ position: 'relative', height: "100%" }} >
+                <TextContainer>
+                    <Title>{text}</Title>
+                </TextContainer>
+            </Container>
         </HeroSection>
     );
 };

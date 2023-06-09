@@ -1,5 +1,6 @@
 import { Box, Button } from '@mui/material';
 import { styled } from '@mui/system';
+import { Link } from 'react-router-dom';
 
 const StyledBox = styled(Box)(({ theme, backgroundImage }) => ({
     position: 'relative',
@@ -34,11 +35,16 @@ const StyledButton = styled(Button)(({ theme }) => ({
         padding: '12px 24px',
     },
 }));
+const handleClick = () => {
 
+    window.scrollTo(0, 0);
+};
 const Aboutcard = ({ img }) => {
     return (
         <StyledBox backgroundImage={img}>
-            <StyledButton variant="contained">buy now</StyledButton>
+            <StyledButton onClick={handleClick} variant="contained"
+                component={Link}
+                to="/products">buy now</StyledButton>
         </StyledBox>
     );
 };
