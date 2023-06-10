@@ -49,6 +49,7 @@ const Carttotalprovider = ({ children }) => {
 
         if (itemExists.quantity === 1) {
             setCartTotal((prevCart) => prevCart.filter((cartItem) => cartItem.title !== item.title));
+            setFlag(true)
         } else {
             setCartTotal((prevCart) =>
                 prevCart.map((cartItem) =>
