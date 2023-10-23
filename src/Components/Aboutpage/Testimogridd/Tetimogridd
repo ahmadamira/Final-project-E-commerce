@@ -1,25 +1,25 @@
-import React from 'react';
-import { Container, Grid } from '@mui/material';
-import Testimcard from '../Testimocard/Testimocard';
+import React from "react";
+import { Container, Grid } from "@mui/material";
+import Testimcard from "../Testimocard/Testimocard";
 
 const Tesimogridd = () => {
-    const array = [1, 2, 3, 4];
+  const array = [1, 2, 3, 4];
 
-    return (
-        <Container maxWidth="lg">
-            <Grid container spacing={2} justifyContent="center">
-                <Grid item xs={12}>
-                    <Grid container justifyContent="center" spacing={2}>
-                        {array.map((data) => (
-                            <Grid item key={data} xs={12} sm={6} md={3} lg={3} xl={3}>
-                                <Testimcard />
-                            </Grid>
-                        ))}
-                    </Grid>
-                </Grid>
-            </Grid>
-        </Container>
-    );
+  return (
+    <Container maxWidth="lg">
+      <Grid container spacing={2} justifyContent="center">
+        <Grid item xs={12}>
+          <Grid container justifyContent="center" spacing={2}>
+            {array.map((data) => (
+              <Grid item key={data} xs={12} sm={6} md={3} lg={3} xl={3}>
+                <Testimcard />
+              </Grid>
+            ))}
+          </Grid>
+        </Grid>
+      </Grid>
+    </Container>
+  );
 };
 
 export default Tesimogridd;
