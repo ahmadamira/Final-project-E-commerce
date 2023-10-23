@@ -1,29 +1,23 @@
-import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
-import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
-import CasesOutlinedIcon from '@mui/icons-material/CasesOutlined';
-import AdbIcon from '@mui/icons-material/Adb';
-import { UserAuth } from '../../Context/Authcontext';
-import { Badge } from '@mui/material';
-import styled from '@emotion/styled';
-import { Carttotalcontext } from '../../Context/Carttotalcontext';
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
+import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
+import CasesOutlinedIcon from "@mui/icons-material/CasesOutlined";
+import { UserAuth } from "../../Context/Authcontext";
+import { Badge } from "@mui/material";
+import { Carttotalcontext } from "../../Context/Carttotalcontext";
 
-
-const pages = ['Home', 'About', 'Contactus'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = ["Home", "About", "Contactus"];
+const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -34,7 +28,7 @@ function ResponsiveAppBar() {
   const handleClick = async () => {
     try {
       await logout();
-      navigate('/');
+      navigate("/");
       for (let i = 0; i < cartTotal.length; i = i + 1) {
         deleteItem(cartTotal[i]);
       }
@@ -59,7 +53,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static" sx={{ background: 'white' }}>
+    <AppBar position="static" sx={{ background: "white" }}>
       <Container maxWidth="lg">
         <Toolbar disableGutters>
           <Typography
@@ -70,16 +64,16 @@ function ResponsiveAppBar() {
             sx={{
               mr: 9,
               ml: 3,
-              display: { xs: 'none', md: 'flex' },
+              display: { xs: "none", md: "flex" },
               fontWeight: 700,
-              color: 'black',
-              textDecoration: 'none',
+              color: "black",
+              textDecoration: "none",
             }}
           >
             NorthStar
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -94,18 +88,18 @@ function ResponsiveAppBar() {
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
+                vertical: "bottom",
+                horizontal: "left",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
+                vertical: "top",
+                horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: "block", md: "none" },
               }}
             >
               {pages.map((page) => (
@@ -113,9 +107,9 @@ function ResponsiveAppBar() {
                   <Button
                     key={page}
                     component={Link}
-                    to={page === 'Home' ? '/' : '/' + page.toLowerCase()}
+                    to={page === "Home" ? "/" : "/" + page.toLowerCase()}
                     onClick={handleCloseNavMenu}
-                    sx={{ color: 'black' }}
+                    sx={{ color: "black" }}
                   >
                     {page}
                   </Button>
@@ -131,76 +125,62 @@ function ResponsiveAppBar() {
             to="/"
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
+              display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: "monospace",
               fontWeight: 700,
-              color: 'black',
-              textDecoration: 'none',
+              color: "black",
+              textDecoration: "none",
             }}
           >
             NorthStar
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
                 key={page}
                 component={Link}
-                to={page === 'Home' ? '/' : '/' + page.toLowerCase()}
+                to={page === "Home" ? "/" : "/" + page.toLowerCase()}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'black', display: 'block' }}
+                sx={{ my: 2, color: "black", display: "block" }}
               >
                 {page}
               </Button>
             ))}
           </Box>
-          {user ? <Box><Link to="/total" style={{ textDecoration: 'none' }}>
-            <button onClick={handleClick} title="Log out" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
-              <Badge badgeContent={0} color="primary">
-                <PermIdentityOutlinedIcon sx={{ color: 'black', position: 'relative', pr: 1.5 }} />
-              </Badge>
-            </button>
-          </Link>
-            <Badge badgeContent={cartTotal.length} color="primary">
-              <Link to="/total" style={{ textDecoration: 'none' }}>
-
-                <CasesOutlinedIcon
-                  sx={{ color: 'black', position: 'relative', pr: 1.5 }}
-                />
-
-              </Link>
-            </Badge>
-          </Box> : <Link to="/login" style={{ textDecoration: 'none' }}> <Button>Log in</Button></Link>}
-          {/* <Box sx={{ flexGrow: 0 }}>
+          {user ? (
             <Box>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <MenuOutlinedIcon sx={{ color: 'black', pr: 3 }} />
-                </IconButton>
-              </Tooltip>
+              <Link to="/total" style={{ textDecoration: "none" }}>
+                <button
+                  onClick={handleClick}
+                  title="Log out"
+                  style={{
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                  }}
+                >
+                  <Badge badgeContent={0} color="primary">
+                    <PermIdentityOutlinedIcon
+                      sx={{ color: "black", position: "relative", pr: 1.5 }}
+                    />
+                  </Badge>
+                </button>
+              </Link>
+              <Badge badgeContent={cartTotal.length} color="primary">
+                <Link to="/total" style={{ textDecoration: "none" }}>
+                  <CasesOutlinedIcon
+                    sx={{ color: "black", position: "relative", pr: 1.5 }}
+                  />
+                </Link>
+              </Badge>
             </Box>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box> */}
+          ) : (
+            <Link to="/login" style={{ textDecoration: "none" }}>
+              {" "}
+              <Button>Log in</Button>
+            </Link>
+          )}
         </Toolbar>
       </Container>
     </AppBar>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Button, useTheme, Container } from "@mui/material";
 import classes from "./Hero.module.css";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 const Hero = () => {
   const theme = useTheme();
   return (
@@ -11,11 +11,6 @@ const Hero = () => {
       sx={{ width: "100%" }}
       className={classes.hero}
     >
-      {/* <img
-        src="/imgs/img_1.png"
-        alt="Hero Image"
-        style={{ width: "100%", height: "auto" }}
-      /> */}
       <Container maxWidth="lg" sx={{ position: "relative", height: "100%" }}>
         <Box
           sx={{
@@ -44,7 +39,6 @@ const Hero = () => {
             variant="contained"
             component={Link}
             to="/products"
-
             sx={{
               backgroundColor: "transparent",
               border: "3px solid white",
@@ -54,8 +48,8 @@ const Hero = () => {
             SHOP NOW
           </Button>
         </Box>
-      </Container >
-    </Box >
+      </Container>
+    </Box>
   );
 };
 

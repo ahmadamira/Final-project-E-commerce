@@ -44,5 +44,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "The project idea is an e-commerce website called ”NorthStar” that sells cloth\u0002ing items. The website will allow customers to browse through the available\r products, add them to their cart, and place orders.\r The main goal of NorthStar is to provide customers with an easy and conve\u0002nient way to shop for clothing items online. The website will provide a platform\r where customers can view the products and place orders without having to leave\r their homes.",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }
